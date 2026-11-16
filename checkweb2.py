@@ -138,7 +138,7 @@ Guidelines:
         except Exception as e:
             last_error = e
             print(f"[Warning] Key #{idx} failed: {e}. Switching to next key...")
-            time.sleep(0.5)
+            time.sleep(2)
             continue
 
     raise RuntimeError(f"ไม่สามารถใช้งาน API Key ทั้งหมดที่ให้มาได้ (Error ล่าสุด: {last_error})")
