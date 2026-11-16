@@ -4,25 +4,15 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template_string, request
 from google import genai
 from google.genai import types
-
+import os
 app = Flask(__name__)
 
 # กำหนดชื่อโมเดลตามที่ต้องการ
 MODEL_NAME = "gemini-3.6-flash"
 
 # API Keys ทั้ง 10 ตัวเดิมของคุณ
-EMBEDDED_API_KEYS = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
-]
+raw_keys = os.environ.get("EMBEDDED_API_KEYS", "")
+EMBEDDED_API_KEYS = [key.strip() for key in raw_keys.split(",") if key.strip()]
 
 # หน้าเว็บ UI (HTML + Tailwind CSS)
 HTML_TEMPLATE = """
